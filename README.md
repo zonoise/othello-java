@@ -1,0 +1,3 @@
+# othello-java
+
+for study
