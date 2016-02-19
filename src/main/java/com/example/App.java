@@ -28,12 +28,17 @@ public class App
 
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
-        sub();
-        sub2();
+        try {
+            System.out.println( "Hello World!" );
+            sub();
+            sub2();
+        }catch (Exception e){
+
+        }
+
     }
 
-    public static void sub(){
+    public static void sub() throws Exception{
 
         Board board = new Board();
         board.init();
@@ -55,7 +60,7 @@ public class App
         reverser.reversed();
     }
 
-    public static void sub2(){
+    public static void sub2() throws Exception{
 
         Board board = new Board();
         board.init();
@@ -77,6 +82,5 @@ public class App
         System.out.println(s2);
 
     }
-
 
 }
