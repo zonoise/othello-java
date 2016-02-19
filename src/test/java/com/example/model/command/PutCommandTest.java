@@ -41,16 +41,16 @@ public class PutCommandTest extends TestCase {
     public void test1(){
         Game game = put(2,3);
         String after = game.getBoard().toDetailString();
-        System.out.println(after);
+        //System.out.println(after);
         String expect =
-        "0 0 0 0 0 0 0 0\n" +
-        "0 0 0 0 0 0 0 0\n" +
-        "0 0 0 0 0 0 0 0\n" +
-        "0 0 0 W B 0 0 0\n" +
-        "0 0 0 B W 0 0 0\n" +
-        "0 0 0 0 0 0 0 0\n" +
-        "0 0 0 0 0 0 0 0\n" +
-        "0 0 0 0 0 0 0 0\n";
+        "0 0 0 0 0 0 0 0 \n" +
+        "0 0 0 0 0 0 0 0 \n" +
+        "0 0 0 0 0 0 0 0 \n" +
+        "0 0 0 W B 0 0 0 \n" +
+        "0 0 0 B W 0 0 0 \n" +
+        "0 0 0 0 0 0 0 0 \n" +
+        "0 0 0 0 0 0 0 0 \n" +
+        "0 0 0 0 0 0 0 0 \n";
         assertEquals(expect,after);
     }
 
