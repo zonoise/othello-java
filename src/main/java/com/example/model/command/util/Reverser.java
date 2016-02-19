@@ -36,9 +36,7 @@ public class Reverser {
         list.addAll(this.reversePoint(-1, -1)); //7:30
         list.addAll(this.reversePoint(-1, 0)); //9:00
         list.addAll(this.reversePoint(-1, -1)); //10:30
-        list.forEach(c -> {
-            System.out.println("X:" + c.getX() + "Y:" + c.getY());
-        });
+
 
         return list;
     }
@@ -53,12 +51,14 @@ public class Reverser {
         do {
             p.translate(directX, directY);
             Integer i = board.getValue(p);
-            System.out.print(i);
             status = queue.push(new Point(p),i);
-
         } while (status)  ;
 
-        return queue.getPoints();
+        if(queue.isReverse()) {
+            return queue.getPoints();
+        }else{
+            return new LinkedList<Point>();
+        }
     }
 
 }

@@ -23,12 +23,10 @@ public class ReverseQueue{
         this.pushedColor = pushedColor;
         buffer = new LinkedList<Integer>();
         buffer2 = new LinkedList<Point>();
-
     }
 
     public boolean push(Point point,Integer color){
         if(color == Board.BLACK || color == Board.WHITE){
-
         }else{return false;}
 
         if(color == pushedColor){
@@ -46,6 +44,9 @@ public class ReverseQueue{
         return buffer.size();
     }
 
+    public boolean isReverse(){
+        return pushedColor == nextColor;
+    }
     public LinkedList<Point> getPoints() {
         return buffer2;
     }

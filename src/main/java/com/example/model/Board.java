@@ -10,6 +10,7 @@ public class Board {
     public static final Integer BLACK = 1;
     public static final Integer WHITE = 2;
     public static final Integer EMPTY = 5;
+    public static final Integer PUTTABLE = 6;
 
     private HashMap<Point,Integer> data;
 
@@ -94,6 +95,8 @@ public class Board {
                     sb.append('B');
                 }else if (v == EMPTY){
                     sb.append('0');
+                }else if (v == PUTTABLE){
+                    sb.append('*');
                 }else{
                     sb.append('?');
                 }

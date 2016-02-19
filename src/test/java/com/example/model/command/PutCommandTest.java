@@ -90,4 +90,20 @@ public class PutCommandTest extends TestCase {
             "0 0 0 0 0 0 0 0 \n";
         assertEquals(expect,after);
     }
+
+    public void test4() throws Exception{
+        Game game = put(2,5);
+        String after = game.getBoard().toDetailString();
+        System.out.println(after);
+        String expect =
+                "0 0 0 0 0 0 0 0 \n" +
+                        "0 0 0 0 0 0 0 0 \n" +
+                        "0 0 0 0 0 0 0 0 \n" +
+                        "0 0 0 W B 0 0 0 \n" +
+                        "0 0 0 B B B 0 0 \n" +
+                        "0 0 0 0 0 0 0 0 \n" +
+                        "0 0 0 0 0 0 0 0 \n" +
+                        "0 0 0 0 0 0 0 0 \n";
+        assertEquals(expect,after);
+    }
 }

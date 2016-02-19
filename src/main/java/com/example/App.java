@@ -3,6 +3,7 @@ package com.example;
 import com.example.model.Board;
 import com.example.model.Game;
 import com.example.model.Point;
+import com.example.model.command.GetPutableCellCommand;
 import com.example.model.command.InitializeCommand;
 import com.example.model.command.PutCommand;
 import com.example.model.command.util.Reverser;
@@ -30,7 +31,7 @@ public class App
     {
         try {
             System.out.println( "Hello World!" );
-            sub();
+     //       sub();
             sub2();
         }catch (Exception e){
 
@@ -68,19 +69,23 @@ public class App
         game.setStatus(Game.STATUS_BLACK);
         game.run(new InitializeCommand());
 
-        game.setStatus(Game.STATUS_WHITE);
-        game.run(new PutCommand(new Point(2, 3)));
+        game.run(new GetPutableCellCommand());
 
-        game.setStatus(Game.STATUS_WHITE);
-        game.run(new PutCommand(new Point(1, 3)));
 
-        game.run(new PutCommand(new Point(0, 3)));
-
-        game.run(new PutCommand(new Point(4, 2)));
-
-        String s2 = board.toDetailString();
-        System.out.println(s2);
+//        game.setStatus(Game.STATUS_WHITE);
+//        game.run(new PutCommand(new Point(2, 3)));
+//
+//        game.setStatus(Game.STATUS_WHITE);
+//        game.run(new PutCommand(new Point(1, 3)));
+//
+//        game.run(new PutCommand(new Point(0, 3)));
+//
+//        game.run(new PutCommand(new Point(4, 2)));
+//
+//        String s2 = board.toDetailString();
+//        System.out.println(s2);
 
     }
+
 
 }

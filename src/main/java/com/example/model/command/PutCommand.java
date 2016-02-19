@@ -29,11 +29,12 @@ public class PutCommand extends Command {
             throw new Exception("unknown status");
         }
 
-        //裏返す
+        //裏返すセルを求める
         Board board = game.getBoard();
         Reverser reverser = new Reverser( board ,point ,color );
         List<Point> points = reverser.reversed();
 
+        //反映する
         for(Point p:points ){
             board.setValue(p,color);
         }
