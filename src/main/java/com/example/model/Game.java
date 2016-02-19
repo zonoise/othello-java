@@ -34,7 +34,7 @@ public class Game {
         this.board = board;
     }
 
-    public CommandResult run(Command command){
+    public CommandResult run(Command command) throws Exception{
         command.execute(this);
         CommandResult c = new CommandResult();
         return c;

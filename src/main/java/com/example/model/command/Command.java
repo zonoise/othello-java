@@ -7,5 +7,5 @@ import com.example.model.Game;
  * Created by zonoise on 2016/02/15.
  */
 abstract public class Command {
-    abstract public void execute(Game game);
+    abstract public void execute(Game game) throws Exception;
 }
