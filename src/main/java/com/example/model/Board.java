@@ -93,15 +93,14 @@ public class Board {
                 }else if (v == BLACK){
                     sb.append('B');
                 }else if (v == EMPTY){
-                    sb.append('.');
+                    sb.append('0');
                 }else{
-                    sb.append(v);
+                    sb.append('?');
                 }
-
+                sb.append(' ');
             });
             sb.append('\n');
         });
         return sb.toString();
     }
-
 }
