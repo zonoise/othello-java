@@ -14,7 +14,7 @@ public class BoardTest  extends TestCase {
         board.init();
     }
 
-    public void testAllEmpty() throws Exception {
+    public void testコンストラクトしたあとはすべてEMPTY() throws Exception {
         final int MaxX = 8;
         final int MaxY = 8;
 
