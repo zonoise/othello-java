@@ -25,4 +25,18 @@ public class BoardTest  extends TestCase {
             }
         }
     }
+
+    public void testDetailString(){
+        String actual = board.toDetailString();
+        String expected =
+                 "0 0 0 0 0 0 0 0 \n"
+                +"0 0 0 0 0 0 0 0 \n"
+                +"0 0 0 0 0 0 0 0 \n"
+                +"0 0 0 0 0 0 0 0 \n"
+                +"0 0 0 0 0 0 0 0 \n"
+                +"0 0 0 0 0 0 0 0 \n"
+                +"0 0 0 0 0 0 0 0 \n"
+                +"0 0 0 0 0 0 0 0 \n";
+        assertEquals(expected,actual);
+    }
 }
