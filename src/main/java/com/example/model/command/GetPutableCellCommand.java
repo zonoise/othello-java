@@ -33,25 +33,15 @@ public class GetPutableCellCommand extends Command{
             for (int y = 0; y < 8;y++){
                 Point point = new Point(x,y);
                 if(Board.EMPTY == board.getValue(point)){
-
                     Reverser reverser = new Reverser( board ,point ,color );
                     List<Point> points = reverser.reversed();
-                    if(x==2 && y ==2){
-                        System.out.println(points.size());
-                        System.out.println(points);
-
-                    }
-                    if(x==5 && y ==5){
-                        System.out.println(points.size());
-                    }
                     if(points.size()>0){
                         resultPoints.add(point);
-                        debug.setValue(point, Board.PUTTABLE);
-                        //debug.setValue(point,points.size());
-
+                        debug.setValue(new Point(point), Board.PUTTABLE);
                     }
                 }
             }
+
         }
         System.out.println(debug.toDetailString());
     }

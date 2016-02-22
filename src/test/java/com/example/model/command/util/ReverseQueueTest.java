@@ -22,7 +22,9 @@ public class ReverseQueueTest extends TestCase {
     public void test2(){
         ReverseQueue queue = new ReverseQueue(Board.BLACK);
         assertEquals(false,queue.push(new Point(1, 1), Board.BLACK));
-        assertEquals(false, queue.push(new Point(1, 1), Board.BLACK));
+        //assertEquals(false, queue.push(new Point(1, 1), Board.BLACK));
+//        assertEquals(false, queue.push(new Point(1, 1), Board.EMPTY));
+
         assertEquals(0,queue.getPoints().size());
     }
 

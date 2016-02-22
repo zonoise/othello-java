@@ -3,7 +3,6 @@ package com.example.model.command.util;
 import com.example.model.Board;
 import com.example.model.Point;
 
-import java.awt.*;
 import java.util.LinkedList;
 
 /**
@@ -16,7 +15,7 @@ public class ReverseQueue{
     private LinkedList<Point> buffer2;
     private int index = 0;
     private Integer pushedColor;
-    private Integer nextColor;
+    private Integer lastColor;
     private Integer beforeColor;// color before cursor
 
     public ReverseQueue(Integer pushedColor) {
@@ -26,17 +25,23 @@ public class ReverseQueue{
     }
 
     public boolean push(Point point,Integer color){
-        if(color == Board.BLACK || color == Board.WHITE){
-        }else{return false;}
-
-        if(color == pushedColor){
-            //隣が同じ色なら終わり
-            return false;
-        }else{
-            nextColor = color;
+        if(pushedColor ==Board.WHITE && color == Board.BLACK){
+            lastColor = color;
             buffer2.addLast(point);
             buffer.addLast(color);
             return true;
+        } else if( pushedColor == Board.BLACK && color == Board.WHITE ){
+            lastColor = color;
+            buffer2.addLast(point);
+            buffer.addLast(color);
+            return true;
+        }else if (color == pushedColor){
+            lastColor = color;
+            //buffer2.addLast(point);
+            //buffer.addLast(color);
+            return false;
+        }else{
+            return false;
         }
     }
 
@@ -45,7 +50,7 @@ public class ReverseQueue{
     }
 
     public boolean isReverse(){
-        return pushedColor == nextColor;
+        return pushedColor == lastColor;
     }
     public LinkedList<Point> getPoints() {
         return buffer2;
