@@ -23,17 +23,13 @@ public class Reverser {
     }
 
     public List reversed(){
-
-//        System.out.println("reversed start");
-
         LinkedList<Point> list = new LinkedList<Point>();
-        list.addAll(this.reversePoint(0, 1)); //12:00
-
-        list.addAll(this.reversePoint(1, 1)); //1:30
+        list.addAll(this.reversePoint(0, -1)); //12:00
+        list.addAll(this.reversePoint(1,-1)); //1:30
         list.addAll(this.reversePoint(1, 0)); //3:00
-        list.addAll(this.reversePoint(1, -1)); //4:39
-        list.addAll(this.reversePoint(-1, 0)); //6:00
-        list.addAll(this.reversePoint(-1, -1)); //7:30
+        list.addAll(this.reversePoint(1, 1)); //4:30
+        list.addAll(this.reversePoint(0, 1)); //6:00
+        list.addAll(this.reversePoint(-1, 1)); //7:30
         list.addAll(this.reversePoint(-1, 0)); //9:00
         list.addAll(this.reversePoint(-1, -1)); //10:30
 
