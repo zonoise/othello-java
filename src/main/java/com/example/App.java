@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.cui.Cui;
 import com.example.model.Board;
 import com.example.model.Game;
 import com.example.model.Point;
@@ -30,12 +31,23 @@ public class App
     public static void main( String[] args )
     {
         try {
-            System.out.println( "Hello World!" );
-     //       sub();
-            sub2();
+            sub3();
         }catch (Exception e){
 
         }
+
+    }
+
+    public static void sub3() throws Exception{
+
+        Board board = new Board();
+        board.init();
+        Game game = new Game(board);
+        game.setStatus(Game.STATUS_BLACK);
+        game.run(new InitializeCommand());
+
+        Cui cui = new Cui(game);
+        cui.run();
 
     }
 
