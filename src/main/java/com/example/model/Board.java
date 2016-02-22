@@ -18,7 +18,7 @@ public class Board {
     }
 
     public Board(Board b) {
-        this.data = b.data;
+        this.data = new HashMap<Point,Integer>(b.data);
     }
 
     public void init(){
@@ -98,7 +98,9 @@ public class Board {
                 }else if (v == PUTTABLE){
                     sb.append('*');
                 }else{
-                    sb.append('?');
+                    //sb.append('?');
+                    sb.append(v);
+
                 }
                 sb.append(' ');
             });

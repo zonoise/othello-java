@@ -20,6 +20,11 @@ public class PutCommand extends Command {
     }
 
     public void execute(Game game) throws Exception{
+        List<Point> list = (new GetPutableCellCommand()).putable(game);
+        if(!list.contains(point)){
+            System.out.println("同じとこには置けない");
+            return;
+        }
         Integer color = null;
         if(Game.STATUS_BLACK == game.getStatus()){
             color = Board.BLACK;
@@ -31,6 +36,7 @@ public class PutCommand extends Command {
 
         //裏返すセルを求める
         Board board = game.getBoard();
+
         Reverser reverser = new Reverser( board ,point ,color );
         List<Point> points = reverser.reversed();
 

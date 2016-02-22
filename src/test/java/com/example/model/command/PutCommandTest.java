@@ -92,7 +92,7 @@ public class PutCommandTest extends TestCase {
     }
 
     public void test4() throws Exception{
-        Game game = put(2,5);
+        Game game = put(5,4);
         String after = game.getBoard().toDetailString();
         System.out.println(after);
         String expect =

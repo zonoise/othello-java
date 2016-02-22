@@ -15,6 +15,12 @@ public class GetPutableCellCommand extends Command{
 
     @Override
     public void execute(Game game) throws Exception {
+
+          List<Point> list = putable(game);
+        
+    }
+
+    public List<Point> putable(Game game) throws Exception {
         final Board board = game.getBoard();
         final Integer color;
 
@@ -41,8 +47,8 @@ public class GetPutableCellCommand extends Command{
                     }
                 }
             }
-
         }
-        System.out.println(debug.toDetailString());
+        return resultPoints;
     }
+
 }
