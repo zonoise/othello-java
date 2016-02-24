@@ -1,6 +1,7 @@
 package com.example.model;
 
 import com.example.model.command.Command;
+import com.example.model.result.CommandResult;
 
 /**
  * Created by zonoise on 2016/02/15.
@@ -15,7 +16,12 @@ public class Game {
     //置いた
     //裏返せるマスを
     public Game(Board board) {
-        this.board = board;
+        this.board = new Board(board);
+    }
+
+    public Game(Game game){
+        this.board = new Board(game.getBoard());
+        this.setStatus(game.getStatus());
     }
 
     public void setStatus(int status) {
@@ -35,9 +41,8 @@ public class Game {
     }
 
     public CommandResult run(Command command) throws Exception{
-        command.execute(this);
-        CommandResult c = new CommandResult();
-        return c;
+        return command.execute(this);
+
     }
 
     public String boardText(){

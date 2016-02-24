@@ -4,6 +4,9 @@ import com.example.model.Board;
 import com.example.model.Game;
 import com.example.model.Point;
 import com.example.model.command.util.Reverser;
+import com.example.model.result.CommandResult;
+import com.example.model.result.ContinueResult;
+import com.example.model.result.EndResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,10 +17,26 @@ import java.util.List;
 public class GetPutableCellCommand extends Command{
 
     @Override
-    public void execute(Game game) throws Exception {
+    public CommandResult execute(final Game game) throws Exception {
 
-          List<Point> list = putable(game);
-        
+        List<Point> list = putable(game);
+
+        if(0<list.size()){
+            return new ContinueResult();
+        }else{
+            //置く場所がない場合は別の色も試してみて置けるとこがないならEnd
+            Game gameAnatherColor = new Game(game);
+            if(game.getStatus()==Game.STATUS_BLACK){
+                game.setStatus(Game.STATUS_WHITE);
+            }else if(game.getStatus()==Game.STATUS_WHITE){
+                game.setStatus(Game.STATUS_BLACK);
+            }
+             if(0 < putable(gameAnatherColor).size()){
+                 return new ContinueResult();
+             }else {
+                 return new EndResult();
+             }
+        }
     }
 
     public List<Point> putable(Game game) throws Exception {
@@ -50,5 +69,4 @@ public class GetPutableCellCommand extends Command{
         }
         return resultPoints;
     }
-
 }

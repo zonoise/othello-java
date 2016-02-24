@@ -2,6 +2,7 @@ package com.example.model.command;
 
 import com.example.model.Board;
 import com.example.model.Game;
+import com.example.model.result.ContinueResult;
 
 /**
  * Created by zonoise on 2016/02/15.
@@ -12,7 +13,7 @@ public class InitializeCommand extends Command {
     public InitializeCommand() {
     }
 
-    public void execute(Game game){
+    public ContinueResult execute(Game game){
         Board board = game.getBoard();
         try {
 
@@ -24,5 +25,7 @@ public class InitializeCommand extends Command {
         }catch (Exception e){
 
         }
+        return new ContinueResult();
+
     }
 }
