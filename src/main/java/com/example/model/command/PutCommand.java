@@ -4,6 +4,8 @@ import com.example.model.Board;
 import com.example.model.Game;
 import com.example.model.Point;
 import com.example.model.command.util.Reverser;
+import com.example.model.result.CommandResult;
+import com.example.model.result.ContinueResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +21,11 @@ public class PutCommand extends Command {
 
     }
 
-    public void execute(Game game) throws Exception{
+    public CommandResult execute(Game game) throws Exception{
         List<Point> list = (new GetPutableCellCommand()).putable(game);
         if(!list.contains(point)){
             System.out.println("同じとこには置けない");
-            return;
+            return new ContinueResult();
         }
         Integer color = null;
         if(Game.STATUS_BLACK == game.getStatus()){
@@ -53,6 +55,7 @@ public class PutCommand extends Command {
         }else if (Game.STATUS_WHITE == game.getStatus()){
             game.setStatus(Game.STATUS_BLACK);
         }
-        return;
+
+        return new ContinueResult();
     }
 }
