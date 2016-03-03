@@ -7,6 +7,7 @@ import com.example.model.command.util.Reverser;
 import com.example.model.result.CommandResult;
 import com.example.model.result.ContinueResult;
 import com.example.model.result.EndResult;
+import com.example.model.result.HintResult;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +17,15 @@ import java.util.List;
  */
 public class GetPutableCellCommand extends Command{
 
+    private Board hintBoard;
+
     @Override
     public CommandResult execute(final Game game) throws Exception {
 
         List<Point> list = putable(game);
 
         if(0<list.size()){
-            return new ContinueResult();
+            return new HintResult(hintBoard);
         }else{
             //置く場所がない場合は別の色も試してみて置けるとこがないならEnd
             Game gameAnatherColor = new Game(game);
@@ -32,7 +35,8 @@ public class GetPutableCellCommand extends Command{
                 game.setStatus(Game.STATUS_BLACK);
             }
              if(0 < putable(gameAnatherColor).size()){
-                 return new ContinueResult();
+                 return new HintResult(hintBoard);
+                 //return new ContinueResult();
              }else {
                  return new EndResult();
              }
@@ -51,7 +55,7 @@ public class GetPutableCellCommand extends Command{
             throw new Exception();
         }
         List<Point> resultPoints = new ArrayList<Point>();
-        Board debug = new Board(board);
+        hintBoard = new Board(board);
 
         //あいているセルに駒を置いてみて、裏返るセルがあるなら、そこはおけるセル。
         for (int x = 0; x < 8; x++){
@@ -62,7 +66,7 @@ public class GetPutableCellCommand extends Command{
                     List<Point> points = reverser.reversed();
                     if(points.size()>0){
                         resultPoints.add(point);
-                        debug.setValue(new Point(point), Board.PUTTABLE);
+                        hintBoard.setValue(new Point(point), Board.PUTTABLE);
                     }
                 }
             }
