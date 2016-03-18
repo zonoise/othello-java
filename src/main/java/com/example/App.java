@@ -28,76 +28,16 @@ public class App
  */
 
 
-    public static void main( String[] args )
+    public static void main( String[] args ) throws Exception
     {
-        try {
-            sub3();
-        }catch (Exception e){
+            Board board = new Board();
+            board.init();
+            Game game = new Game(board);
+            game.setStatus(Game.STATUS_BLACK);
+            game.run(new InitializeCommand());
 
-        }
-
+            Cui cui = new Cui(game);
+            cui.run();
     }
-
-    public static void sub3() throws Exception{
-
-        Board board = new Board();
-        board.init();
-        Game game = new Game(board);
-        game.setStatus(Game.STATUS_BLACK);
-        game.run(new InitializeCommand());
-
-        Cui cui = new Cui(game);
-        cui.run();
-
-    }
-
-    public static void sub() throws Exception{
-
-        Board board = new Board();
-        board.init();
-        Game game = new Game(board);
-        game.setStatus(Game.STATUS_BLACK);
-        game.run(new InitializeCommand());
-
-        game.setStatus(Game.STATUS_WHITE);
-        game.run(new PutCommand(new Point(2, 3)));
-
-        game.setStatus(Game.STATUS_WHITE);
-        game.run(new PutCommand(new Point(1, 3)));
-
-
-        String s2 = board.toDetailString();
-        System.out.println(s2);
-
-        Reverser reverser= new Reverser(board,new Point(0,3),Board.BLACK);
-        reverser.reversed();
-    }
-
-    public static void sub2() throws Exception{
-
-        Board board = new Board();
-        board.init();
-        Game game = new Game(board);
-        game.setStatus(Game.STATUS_BLACK);
-        game.run(new InitializeCommand());
-
-        game.run(new GetPutableCellCommand());
-
-
-//        game.setStatus(Game.STATUS_WHITE);
-//        game.run(new PutCommand(new Point(2, 3)));
-//
-//        game.setStatus(Game.STATUS_WHITE);
-//        game.run(new PutCommand(new Point(1, 3)));
-//
-//        game.run(new PutCommand(new Point(0, 3)));
-//
-//        game.run(new PutCommand(new Point(4, 2)));
-//
-//        String s2 = board.toDetailString();
-//        System.out.println(s2);
-
-    }
-
 
 }
